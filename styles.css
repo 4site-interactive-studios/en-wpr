@@ -1,0 +1,173 @@
+body {
+  --fields_spacing-block: 0.5rem;
+  --fields_spacing-inline: 0.25em;
+  --radio_background-color: #fff;
+  --radio_background-color_hover: #fff;
+  --radio_background-color_selected: #2ba6cb;
+  --radio_border-background-color: #fff;
+  --radio_border-color: #2ba6cb;
+  --radio_border-color_hover: #767677;
+  --radio_border-color_selected: #2ba6cb;
+  --radio_border-radius: 50%;
+  --radio_border-width: 2px;
+  --radio_box-shadow: none;
+  --radio_box-shadow_hover: none;
+  --radio_box-shadow_selected: inset 0 0 0 4px #fff;
+  --radio_color: #000;
+  --radio_color_hover: #000;
+  --radio_color_selected: #2ba6cb;
+  --radio_content: "";
+  --radio_font-family: "Fira Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  --radio_font-size: 16px;
+  --radio_font-weight: ;
+  --radio_height: 22px;
+  --radio_line-height: 1.7;
+  --radio_text-transform: ;
+  --radio_top: 0px;
+  --radio_width: 22px;
+}
+.en__pg__display img {
+  max-width: 150px !important;
+  min-width: 100% !important;
+}
+.en__pg .en__pg__body {
+  display: grid;
+  grid-template-columns: min-content auto auto;
+  grid-template-rows: min-content;
+  grid-auto-columns: min-content;
+  grid-auto-rows: min-content;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  align-items: center;
+  grid-template-areas: "en__pg__select en__pg__detail en__pg__display";
+  cursor: pointer;
+}
+
+.en__pg__select {
+  min-width: 35px;
+  align-self: center;
+  grid-area: en__pg__select;
+  padding: 0 calc(var(--fields_spacing-inline) * 2) 0 0;
+}
+.en__pg__display {
+  grid-area: en__pg__display;
+  padding: 0 0 0 calc(var(--fields_spacing-inline) * 2);
+}
+.en__pg__detail {
+  grid-area: en__pg__detail;
+  padding: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.en__pg__detail > * {
+  width: 100%;
+}
+.en__pg__detail .en__pg__name {
+  order: 1;
+}
+.en__pg__detail .en__pg__optionTypes {
+  order: 2;
+  flex-direction: column;
+  margin: 10px 0;
+  width: 90%;
+}
+.en__pg__detail .en__pg__description {
+  order: 4;
+}
+.en__pg__detail .en__pg__optionTypes label {
+  display: none;
+}
+.en__pg__detail .en__pg__description > * {
+  margin: 0 0 10px;
+}
+.en__pg__detail .en__field__error {
+  order: 3;
+  top: auto !important;
+  position: relative !important;
+}
+.en__pg__name {
+  margin-top: 0;
+}
+h2.en__pg__name {
+  text-align: left;
+}
+.en__pg__optionType {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+.en__pg__optionType select {
+  width: auto;
+  margin: 0 !important;
+}
+.en__pg__image {
+  max-width: 125px;
+  min-width: 100%;
+}
+.en__pg--selected .en__pg__image--selected {
+  outline-color: transparent;
+}
+.en__pg.en__pg--selected {
+  background-color: rgb(44 166 203 / 10%);
+}
+.en__pgList[data-nogift] .en__pg:last-of-type .en__pg__display {
+  flex-basis: 0;
+  padding: 0;
+}
+.en__pg__select input {
+  cursor: pointer;
+  visibility: hidden;
+  width: 30px;
+  max-width: min-content;
+  content: "";
+  min-height: var(--radio_height);
+}
+.en__pg__select input:before {
+  visibility: visible;
+  content: var(--radio_content);
+  justify-content: center;
+  align-items: center;
+  color: var(--radio_color);
+  background-color: var(--radio_background-color);
+  border-style: solid;
+  border-width: var(--radio_border-width);
+  border-color: var(--radio_border-color);
+  border-radius: var(--radio_border-radius);
+  height: var(--radio_height);
+  width: var(--radio_width);
+  min-width: var(--radio_width);
+  box-shadow: var(--radio_box-shadow);
+  display: flex;
+}
+.en__pg__select input:focus:before,
+.en__pg__select input:hover:before {
+  color: var(--radio_color_hover);
+  background-color: var(--radio_background-color_hover);
+  border-color: var(--radio_border-color_hover);
+  box-shadow: var(--radio_box-shadow_hover);
+}
+.en__pg__select input:not(:checked):before {
+  color: transparent;
+}
+.en__pg__select input:checked:before {
+  color: var(--radio_color_selected);
+  background-color: var(--radio_background-color_selected);
+  border-color: var(--radio_border-color_selected);
+  box-shadow: var(--radio_box-shadow_selected);
+}
+
+@media (max-width: 41.25em) {
+  .en__pg .en__pg__body {
+    grid-template-areas:
+      "en__pg__select en__pg__detail"
+      "en__pg__display en__pg__display";
+    gap: 10px;
+  }
+  .en__pg__display {
+    padding: 0;
+    max-width: 450px;
+    margin: 0 auto;
+  }
+}
