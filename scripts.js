@@ -69,3 +69,12 @@ if ("pageJson" in window && window.pageJson.pageType === "premiumgift") {
     });
   });
 }
+
+// Show error when radio button is clicked and dropdown isn't selected
+window.onload = function () {
+  document.querySelectorAll(".en__pg__select input").forEach((item) => {
+    item.addEventListener("click", (e) => {
+      e.target.parentElement.click();
+    });
+  });
+};
