@@ -72,9 +72,38 @@ if ("pageJson" in window && window.pageJson.pageType === "premiumgift") {
 
 // Show error when radio button is clicked and dropdown isn't selected
 window.onload = function () {
-  document.querySelectorAll(".en__pg__select input").forEach((item) => {
-    item.addEventListener("click", (e) => {
-      e.target.parentElement.click();
+  function pGiftHandler() {
+    this.parentElement.click();
+  }
+
+  function clickHandler() {
+    document.querySelectorAll(".en__pg__select input").forEach((item) => {
+      item.removeEventListener("click", pGiftHandler);
+      item.addEventListener("click", pGiftHandler);
     });
-  });
+  }
+
+  clickHandler();
+
+  // Re-add event listeners when radio buttons are reset
+  document
+    .querySelectorAll(
+      ".en__field--recurrpay input, .en__field--donationAmt input"
+    )
+    .forEach((item) =>
+      item.addEventListener("click", (e) => {
+        document.querySelector(".en__pg--selected .en__pg__select").click();
+        if (e.target.parentElement.classList.contains("en__field--recurrpay")) {
+          document
+            .querySelectorAll(".en__field--donationAmt input")
+            .forEach((item) =>
+              item.addEventListener("click", () => {
+                setTimeout(clickHandler, 500);
+              })
+            );
+        }
+
+        setTimeout(clickHandler, 500);
+      })
+    );
 };
